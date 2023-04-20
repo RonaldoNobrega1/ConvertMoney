@@ -4,6 +4,8 @@ const select = document.getElementById("currency-select")
 const dolar = 5.2
 const euro = 5.47
 const bitcoin = 147462.25
+const libraEsterlina = 6.30
+const francoSuiço = 5.65
 
 const convertValues = () => {
   const inputReais = document.getElementById("input-real").value
@@ -34,6 +36,18 @@ const convertValues = () => {
       currency: "BTC",
     }).format(inputReais / bitcoin)
   }
+  if (select.value === "£ Libra Esterlina") {
+    currencyValueText.innerHTML = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    }).format(inputReais / libraEsterlina)
+  }
+  if (select.value === "CHF Franco Suiço") {
+    currencyValueText.innerHTML = new Intl.NumberFormat("de-CH", {
+      style: "currency",
+      currency: "CHF",
+    }).format(inputReais / francoSuiço)
+  }
 }
 
 changecurrency = () => {
@@ -51,6 +65,24 @@ changecurrency = () => {
   if(select.value === "₿ Bitcoin") {
     currencyName.innerHTML = "Bitcoin"
     currencyImg.src = "./images/bitcoin.png"
+  }
+  if(select.value === "£ Libra Esterlina") {
+    currencyName.innerHTML = "Libra Esterlina"
+    currencyImg.src = "./images/libra-esterlina.png"
+    currencyImg.width = 44;
+    currencyImg.height = 44;
+  }
+  if(select.value === "CHF Franco Suiço") {
+    currencyName.innerHTML = "Franco Suiço"
+    currencyImg.src = "./images/franco-suiço.png"
+    currencyImg.width = 44;
+    currencyImg.height = 44;
+  }
+  if(select.value === "¥ Iene Japonês") {
+    currencyName.innerHTML = "Iene Japonês"
+    currencyImg.src = "./images/japao.png"
+    currencyImg.width = 44;
+    currencyImg.height = 44;
   }
   convertValues()
 }
